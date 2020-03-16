@@ -2,7 +2,7 @@ const fs = require('fs')
 const async_hooks = require('async_hooks')
 
 function log (...args) {
-  true && fs.writeSync(1, args.join(' ') + '\n')
+  process.env.DEBUG_CLS && fs.writeSync(1, args.join(' ') + '\n')
 }
 
 const context = new Map()

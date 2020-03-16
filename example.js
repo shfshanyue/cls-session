@@ -8,7 +8,6 @@ function timeout (id) {
     setTimeout(() => {
       const a = session.get('a')
       console.log(a)
-      console.log('size', session.context.size, '\n\n')
     })
   })
 }
