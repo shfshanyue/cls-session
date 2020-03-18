@@ -1,11 +1,23 @@
 {
   "name": "cls-session",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLS using async hooks instead of async-listener",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": ["index.js"],
+  "engines": {
+    "node": ">=8.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shfshanyue/cls-session.git"
+  },
+  "keywords": [
+    "cls",
+    "context"
+  ],
   "author": "",
   "license": "ISC"
 }

@@ -1,4 +1,4 @@
-# A cls session implementation use async_hooks
+# A cls session implementation using async_hooks
 
 Continuation Local Storage works like thread-local storage in threaded programming. This is a implementation of CLS using async_hooks instead of async-listener.
 
