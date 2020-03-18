@@ -1,12 +1,14 @@
 {
   "name": "cls-session",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLS using async hooks instead of async-listener",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "engines": {
     "node": ">=8.2.1"
   },
