@@ -1,7 +1,7 @@
-const fs = require('fs')
-const async_hooks = require('async_hooks')
+import fs from 'fs'
+import async_hooks from 'async_hooks'
 
-function log (...args) {
+function log (...args: any[]) {
   process.env.DEBUG_CLS && fs.writeSync(1, args.join(' ') + '\n')
 }
 
@@ -29,12 +29,10 @@ async_hooks.createHook({
 
 
 class Session {
-  constructor () {
-    // cls by asyncId
-    this.context = context
-  }
+  // cls by asyncId
+  context = context
 
-  get (key) {
+  get (key: any) {
     const asyncId = async_hooks.executionAsyncId()
     const store = this.context.get(asyncId)
     if (store) {
@@ -42,7 +40,7 @@ class Session {
     }
   }
 
-  set (key, value) {
+  set (key: any, value: any) {
     const asyncId = async_hooks.executionAsyncId()
     const store = this.context.get(asyncId)
     if (store) {
@@ -50,7 +48,7 @@ class Session {
     }
   }
 
-  async scope (fn) {
+  async scope (fn: () => Promise<any> | any) {
     await Promise.resolve()
     const asyncId = async_hooks.executionAsyncId()
     log('\nScope:', asyncId)
@@ -61,5 +59,5 @@ class Session {
   }
 }
 
-module.exports = Session
+export default Session
 

@@ -1,8 +1,8 @@
-const Session = require('./index')
+import Session from './index'
 
 const session = new Session()
 
-function timeout (id) {
+function timeout (id: number) {
   session.scope(() => {
     session.set('a', id)
     setTimeout(() => {
@@ -13,3 +13,5 @@ function timeout (id) {
 }
 
 timeout(1)
+timeout(2)
+timeout(3)
