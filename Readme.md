@@ -31,6 +31,34 @@ timeout(3)
 // 3
 ```
 
+## session middleware in koa
+
+``` js
+const app = new Koa()
+const session = new Session()
+
+const hello = 'hello, world'
+
+app.use(async (ctx, next) => {
+  ctx.body = hello
+  await next()
+})
+
+app.use(async (ctx, next) => {
+  await session.scope(async () => {
+    session.set('userId', 10086)
+    await next()
+  })
+})
+
+app.use((ctx) => {
+  const userId = session.get('userId')
+  console.log(userId)
+})
+
+app.listen(10086)
+```
+
 ## Class: Session
 
 ### session.scope(callback)
