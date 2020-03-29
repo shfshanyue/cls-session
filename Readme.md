@@ -1,3 +1,7 @@
+[![NPM](https://nodei.co/npm/cls-session.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cls-session/)
+
+![CLS Session Test](https://github.com/shfshanyue/cls-session/workflows/CLS%20Session%20Test/badge.svg)
+
 # A cls session implementation using async_hooks
 
 Continuation Local Storage works like thread-local storage in threaded programming. This is a implementation of CLS using async_hooks instead of async-listener.
@@ -61,11 +65,11 @@ app.listen(10086)
 
 ## Class: Session
 
-### session.scope(callback)
+### session.scope(callback: () => Promise<any> | any): Promise<any>
 
-### session.set(key, value)
+### session.set(key: any, value: any)
 
-### session.get(key)
+### session.get(key: any): any
 
-### session.context
+### session.context: Map
 
