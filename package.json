@@ -1,6 +1,6 @@
 {
   "name": "cls-session",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLS using async hooks instead of async-listener",
   "main": "index.js",
   "scripts": {
