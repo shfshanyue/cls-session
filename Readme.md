@@ -8,7 +8,7 @@ Continuation Local Storage works like thread-local storage in threaded programmi
 
 It need running nodejs version >= 8.2.1.
 
-## Example
+## Usage
 
 ``` js
 const Session = require('./index')
@@ -64,6 +64,8 @@ app.listen(10086)
 ```
 
 ## Class: Session
+
+### session.size: number
 
 ### session.scope(callback: () => Promise<any> | any): Promise<any>
 

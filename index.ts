@@ -32,6 +32,10 @@ class Session {
   // cls by asyncId
   context = context
 
+  get size () {
+    return this.context.size
+  }
+
   get (key: any) {
     const asyncId = async_hooks.executionAsyncId()
     const store = this.context.get(asyncId)

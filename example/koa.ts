@@ -23,3 +23,7 @@ app.use((ctx) => {
 app.listen(3200, () => {
   console.log('Listen 3200')
 })
+
+setInterval(() => {
+  console.log('size', session.size)
+}, 3000)
