@@ -1,4 +1,4 @@
-import Session from './index'
+import Session from '../index'
 
 const session = new Session()
 
