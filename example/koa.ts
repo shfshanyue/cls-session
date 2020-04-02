@@ -8,11 +8,11 @@ function random () {
   return Math.random().toString().slice(2, 8)
 }
 
+app.use(session.middleware())
+
 app.use(async (ctx, next) => {
-  await session.scope(async () => {
-    session.set('userId', random())
-    await next()
-  })
+  session.set('userId', random())
+  await next()
 })
 
 app.use((ctx) => {

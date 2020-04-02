@@ -41,29 +41,22 @@ timeout(3)
 const app = new Koa()
 const session = new Session()
 
-const hello = 'hello, world'
+app.use(session.middleware())
 
 app.use(async (ctx, next) => {
-  ctx.body = hello
+  session.set('userId', random())
   await next()
-})
-
-app.use(async (ctx, next) => {
-  await session.scope(async () => {
-    session.set('userId', 10086)
-    await next()
-  })
 })
 
 app.use((ctx) => {
   const userId = session.get('userId')
-  console.log(userId)
+  ctx.body = userId
 })
 
-app.listen(10086)
+app.listen(3200)
 ```
 
-## Class: Session
+## API: Class: Session
 
 ### session.size: number
 

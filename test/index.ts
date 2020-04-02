@@ -55,16 +55,12 @@ describe('CLS Session', function () {
 
     const hello = 'hello, world'
 
-    app.use(async (ctx, next) => {
-      ctx.body = hello
-      await next()
-    })
+    app.use(session.middleware())
 
     app.use(async (ctx, next) => {
-      await session.scope(async () => {
-        session.set('userId', 10086)
-        await next()
-      })
+      ctx.body = hello
+      session.set('userId', 10086)
+      await next()
     })
 
     app.use((ctx) => {

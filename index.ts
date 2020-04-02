@@ -1,5 +1,6 @@
 import fs from 'fs'
 import async_hooks from 'async_hooks'
+import { Next } from 'koa'
 
 function log (...args: any[]) {
   process.env.DEBUG_CLS && fs.writeSync(1, args.join(' ') + '\n')
@@ -60,6 +61,14 @@ class Session {
     const value = await fn()
     log('\nFinish: ', asyncId)
     return value
+  }
+
+  middleware () {
+    return async ({}, next: Next) => {
+      await this.scope(async () => {
+        await next()
+      })
+    }
   }
 }
 
