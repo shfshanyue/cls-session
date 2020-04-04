@@ -1,12 +1,21 @@
 [![NPM](https://nodei.co/npm/cls-session.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cls-session/)
 
-![CLS Session Test](https://github.com/shfshanyue/cls-session/workflows/CLS%20Session%20Test/badge.svg)
+# cls-session
 
-# A cls session implementation using async_hooks
+[![npm version](https://img.shields.io/npm/v/cls-session.svg?style=flat-square)](https://www.npmjs.org/package/cls-session)
+![build status](https://img.shields.io/github/workflow/status/shfshanyue/cls-session/CLS%20Session%20Test?style=flat-square)
+[![install size](https://packagephobia.now.sh/badge?p=cls-session)](https://packagephobia.now.sh/result?p=cls-session)
+[![npm downloads](https://img.shields.io/npm/dw/cls-session.svg?style=flat-square)](http://npm-stat.com/charts.html?package=cls-session)
 
 Continuation Local Storage works like thread-local storage in threaded programming. This is a implementation of CLS using async_hooks instead of async-listener.
 
-It need running nodejs version >= 8.2.1.
+## Installation
+
+It requires node v8.2.1 or higher for ES2015 and async_hooks support.
+
+``` bash
+$ npm install cls-session
+```
 
 ## Usage
 
@@ -35,7 +44,7 @@ timeout(3)
 // 3
 ```
 
-## session middleware in koa
+## Middleware in koa
 
 ``` js
 const app = new Koa()
@@ -56,7 +65,7 @@ app.use((ctx) => {
 app.listen(3200)
 ```
 
-## API: Class: Session
+## API
 
 ### session.size: number
 
