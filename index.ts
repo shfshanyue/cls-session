@@ -1,6 +1,7 @@
 import fs from 'fs'
 import async_hooks from 'async_hooks'
 import { Next } from 'koa'
+import { NextFunction, Request, Response } from 'express'
 
 function log (...args: any[]) {
   process.env.DEBUG_CLS && fs.writeSync(1, args.join(' ') + '\n')
@@ -68,6 +69,12 @@ class Session {
       await this.scope(async () => {
         await next()
       })
+    }
+  }
+
+  expressMiddleware () {
+    return (req: Request, res: Response, next: NextFunction) => {
+      this.scope(() => next())
     }
   }
 }

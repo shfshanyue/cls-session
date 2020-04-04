@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import request from 'supertest'
 
 import Koa from 'koa'
+import express from 'express'
 
 import Session from '../index'
 
@@ -70,6 +71,31 @@ describe('CLS Session', function () {
     })
 
     request(app.callback())
+      .get('/')
+      .expect(hello, done)
+  })
+
+  it ('expect work at express middleware', (done) => {
+
+    const app = express()
+    const session = new Session()
+
+    const hello = 'hello, world'
+
+    app.use(session.expressMiddleware())
+
+    app.use((req, res, next) => {
+      session.set('userId', 10086)
+      next()
+    })
+
+    app.get('/', function (req, res) {
+      const userId = session.get('userId')
+      expect(userId).to.equal(10086)
+      res.send(hello)
+    })
+
+    request(app)
       .get('/')
       .expect(hello, done)
   })

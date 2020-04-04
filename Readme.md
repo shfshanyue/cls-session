@@ -53,7 +53,7 @@ const session = new Session()
 app.use(session.middleware())
 
 app.use(async (ctx, next) => {
-  session.set('userId', random())
+  session.set('userId', 10086)
   await next()
 })
 
@@ -63,6 +63,32 @@ app.use((ctx) => {
 })
 
 app.listen(3200)
+```
+
+## Middleware in express
+
+``` js
+import Session from '../index'
+import express from 'express'
+
+const app = express()
+const session = new Session()
+
+app.use(session.expressMiddleware())
+
+app.use((req, res, next) => {
+  session.set('userId', 10086)
+  next()
+})
+
+app.use((req, res, next) => {
+  const userId = session.get('userId')
+  res.send(userId)
+})
+
+app.listen(3200, () => {
+  console.log('Listen 3200')
+})
 ```
 
 ## API
