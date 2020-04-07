@@ -20,7 +20,7 @@ $ npm install cls-session
 ## Usage
 
 ``` js
-const Session = require('./index')
+const Session = require('cls-session')
 
 const session = new Session()
 
@@ -47,6 +47,9 @@ timeout(3)
 ## Middleware in koa
 
 ``` js
+import Session from 'cls-session'
+import Koa from 'koa'
+
 const app = new Koa()
 const session = new Session()
 
@@ -68,7 +71,7 @@ app.listen(3200)
 ## Middleware in express
 
 ``` js
-import Session from '../index'
+import Session from 'cls-session'
 import express from 'express'
 
 const app = express()
@@ -93,13 +96,27 @@ app.listen(3200, () => {
 
 ## API
 
-### session.size: number
-
 ### session.scope(callback: () => Promise<any> | any): Promise<any>
+
+Create a new context on which values can be set or read.Run all the functions that are called (either directly, or indirectly through asynchronous functions that take callbacks themselves) from the provided callback within the scope.
 
 ### session.set(key: any, value: any)
 
+Set a value on the current continuation context.
+
 ### session.get(key: any): any
 
+Get a value on the current continuation context.
+
+### session.middleware()
+
+A middleware of koa.
+
+### session.expressMiddleware()
+
+A middleware of express.
+
 ### session.context: Map
+
+### session.size: number
 

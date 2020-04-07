@@ -21,7 +21,13 @@
   },
   "keywords": [
     "cls",
-    "context"
+    "threading",
+    "async_hoks",
+    "shared",
+    "context",
+    "domains",
+    "tracing",
+    "logging"
   ],
   "author": "shanyue",
   "license": "ISC",
