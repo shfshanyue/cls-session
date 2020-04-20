@@ -2,7 +2,7 @@
   "name": "cls-session",
   "version": "1.1.1",
   "description": "CLS using async hooks instead of async-listener",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha test/*.ts -r ts-node/register",
     "build": "tsc",
